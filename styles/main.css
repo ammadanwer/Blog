@@ -1,0 +1,641 @@
+/*
+  Oh Hello!
+
+  These are some base styles so that our tutorial looks good.
+
+  Let's go through the important bits real quick
+*/
+:root {
+	--bg: #353435;
+	--header-bg: #262526;
+	--footer-bg: #2b2a2b;
+	--nav-text: #e2c793;
+	--nav-text-hover: #db9620;
+	--bc-text: #d89700;
+	--bc-text-active: #ffd152;
+	--text: #c8c8b4;
+	--selected: #8f7720;
+	--black: #272727;
+}
+
+.no-select {
+	-webkit-user-select: none; /* Chrome all / Safari all */
+	-moz-user-select: none; /* Firefox all */
+	-ms-user-select: none; /* IE 10+ */
+	user-select: none; /* Likely future */
+}
+
+html {
+	/* border-box box model allows us to add padding and border to our elements without increasing their size */
+	box-sizing: border-box;
+	/* A system font stack so things load nice and quick! */
+	@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese");
+
+	font-family: "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", -apple-system,
+		"Apple Color Emoji", BlinkMacSystemFont, "Open Sans", Roboto, Helvetica,
+		Arial, sans-serif;
+
+	background-color: var(--bg);
+	color: var(--text);
+	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+}
+
+/*
+    WAT IS THIS?!
+    We inherit box-sizing: border-box; from our <html> selector
+    Apparently this is a bit better than applying box-sizing: border-box; directly to the * selector
+  */
+/* 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 5px 0;
+} */
+/* Each item in our grid will contain numbers */
+.item {
+	/* We center the contents of these items. You can also do this with flexbox too! */
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	border: 5px solid rgba(0, 0, 0, 0.03);
+	border-radius: 3px;
+	font-size: 35px;
+	background-color: var(--yellow); /* best colour */
+}
+
+.item p {
+	margin: 0 0 5px 0;
+}
+
+/*
+* This section will contain the css
+*/
+
+.container {
+	display: grid;
+	grid-gap: 5px;
+	grid-template-columns: 150px auto 200px;
+	grid-template-rows: 50px;
+
+	/*
+    * These values are to be used for implicit tracks
+    * Multiple values can be used for the overflown items
+    grid-auto-rows: 50px;
+	grid-auto-columns: min-content;
+    */
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+}
+
+::selection {
+	background: #ffffe6; /* WebKit/Blink Browsers */
+	color: var(--selected);
+}
+::-moz-selection {
+	background: #ffffe6; /* Gecko Browsers */
+	color: var(--selected);
+}
+
+body {
+	/* max-width: 1200px; */
+	min-height: 100vh;
+	margin: auto;
+}
+
+.bar {
+	width: 82vw;
+	max-width: 1300px;
+	margin: 0px auto;
+}
+
+.t-bar {
+	background-color: var(--header-bg);
+	position: sticky;
+	top: 0;
+}
+
+.f-bar {
+	border-width: 1px 0px 0px 0px;
+	border-style: solid;
+	border-color: #0c0c0d;
+	background-color: var(--footer-bg);
+}
+
+.copyright {
+	padding: 3px 0px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #4c494b;
+}
+
+.copyright > span {
+	font-size: 0.7em;
+	flex: 1;
+	padding: 0px;
+	margin: 0px;
+}
+
+.h-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	height: 60px;
+}
+
+.h-item {
+	flex: 1;
+
+	/* border: 1px dashed plum; */
+}
+
+.logo-placeholder {
+	padding: 0px;
+	margin: 0px;
+
+	/*
+	*	Height and Width of this div would be
+	*	according to the dimentions of the logo
+	*/
+
+	height: 30px;
+	width: 150px;
+}
+
+.breadcrum {
+	font-weight: 600;
+	display: block;
+	margin: 10px 0px;
+	padding: 5px 0px;
+
+	border: 1px dashed khaki;
+}
+
+.bc-nav > a {
+	padding: 0px;
+	text-decoration: none;
+
+	color: var(--bc-text);
+	font-weight: 200;
+	transition: color 0.5s;
+}
+
+.bc-nav > a:hover {
+	color: var(--bc-text-active);
+}
+
+.bc-nav > a::before {
+	content: " ❯ ";
+}
+
+.content-container {
+	width: 80vw;
+	margin: auto;
+	padding: 0px;
+	/* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+}
+
+.body-content-item {
+	max-width: 800px;
+}
+
+.body-content {
+	display: flex;
+	width: 80vw;
+}
+
+.body-content-item {
+	flex: 1;
+	width: auto;
+}
+
+.nav-container {
+	font-size: 20px;
+	list-style: none;
+	/* border: 1px solid chocolate; */
+
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+
+.nav-item {
+	/* border: 1px dashed rgb(47, 95, 255); */
+	margin: 0px 0px 0px 15px;
+}
+
+nav ul ul {
+	list-style: none;
+	display: none;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid yellowgreen;
+}
+
+nav ul li:hover > ul {
+	padding: 0px;
+	margin: 10px 0px 0px 0px;
+	display: block;
+	list-style: none;
+	transition: color 0.5s;
+}
+
+nav ul ul {
+	background: var(--header-bg);
+	border-radius: 0px;
+	padding: 0;
+	position: absolute;
+	/* top: 100%; */
+}
+nav ul ul li {
+	float: none;
+	/* margin: 20px 0px; */
+	/* padding: 10px 0px; */
+	position: relative;
+	/* border: 1px solid red; */
+}
+nav ul ul li a {
+	margin: 20px 0px;
+	padding: 20px 20px;
+	color: #fff;
+	font-weight: 300;
+	transition: color 0.5s;
+	/* border: 1px solid red; */
+}
+nav ul ul li a:hover {
+	/* background: transparent; */
+	/* border: 1px solid white; */
+}
+
+nav ul ul li a:after {
+	transition: width 0.5s ease, background-color 0.5s ease, left 0.5s ease;
+	/* border: 1px solid white; */
+}
+
+.nav-item > a {
+	/* float: left; */
+	position: relative;
+	/* margin: 15px; */
+	/* padding-top: 5px; */
+	padding: 0px;
+	text-decoration: none;
+
+	color: whitesmoke;
+	font-weight: 300;
+	transition: color 0.5s;
+}
+
+.nav-item > a:after {
+	content: "";
+	display: block;
+	position: absolute;
+	bottom: 0;
+	/* left: 0%; */
+	height: 1px;
+	width: 0;
+	background: var(--nav-text-hover);
+}
+
+.nav-link:after {
+	transition: width 0.5s ease, background-color 0.5s ease, left 0.5s ease;
+}
+
+.nav-link:hover:after {
+	width: 100%;
+	left: 0%;
+	background: var(--nav-text-hover);
+}
+
+.nav-item a:hover {
+	color: var(--nav-text-hover);
+}
+
+/*
+* Search Bar Style Start
+*/
+
+/*
+.header {
+	max-width: 720px;
+	margin: 2em auto 10em;
+}
+
+.header-nav {
+	position: relative;
+	padding-right: 3em;
+}
+.header-nav:before,
+.header-nav:after {
+	content: "";
+	display: table;
+}
+.header-nav:after {
+	clear: both;
+}
+
+.menu {
+	display: inline-block;
+	float: right;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.menu li {
+	display: inline-block;
+}
+.menu li a {
+	color: #0097bf;
+	display: block;
+	padding: 10px;
+	position: relative;
+	transition: color 0.3s;
+	text-decoration: none;
+}
+
+.search-button {
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+}
+
+.search-toggle {
+	position: relative;
+	display: block;
+	height: 10px;
+	width: 10px;
+}
+.search-toggle::before,
+.search-toggle::after {
+	content: "";
+	position: absolute;
+	display: block;
+	transition: all 0.1s;
+}
+.search-toggle::before {
+	border: 2px solid #0097bf;
+	border-radius: 50%;
+	width: 100%;
+	height: 100%;
+	left: -2px;
+	top: -2px;
+}
+.search-toggle::after {
+	height: 2px;
+	width: 7px;
+	background: #0097bf;
+	top: 10px;
+	left: 8px;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.search-toggle.active::before {
+	width: 0;
+	border-width: 1px;
+	border-radius: 0;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	top: -1px;
+	left: 4px;
+}
+.search-toggle.active::after {
+	width: 12px;
+	left: -1px;
+	top: 4px;
+}
+
+.search-input:focus {
+	outline: none;
+}
+
+#header-1 {
+	border-bottom: 2px solid #0097bf;
+}
+#header-1 .search-box {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	max-height: 0;
+	-webkit-transform: translateY(100%);
+	transform: translateY(100%);
+	background-color: #0097bf;
+	transition: all 0.3s;
+}
+#header-1 .search-box .search-input {
+	width: 100%;
+	height: 100%;
+	padding: 0 1em;
+	border: 0;
+	background-color: transparent;
+	opacity: 0;
+	color: #fff;
+}
+#header-1 .search-box .search-input::-webkit-input-placeholder {
+	color: rgba(255, 255, 255, 0.4);
+}
+#header-1.show .search-box {
+	max-height: 40px;
+}
+#header-1.show .search-box .search-input {
+	opacity: 1;
+}
+*/
+/*
+* Search Bar Style End
+*/
+
+#email:placeholder-shown + #submit:not(:focus) {
+	opacity: 0.5; /* fake the disabled state */
+	pointer-events: none; /* disable mouse events */
+}
+
+.strong {
+	display: block;
+}
+
+.f-container {
+	display: flex;
+	height: 300px;
+	justify-content: center;
+	align-items: center;
+}
+
+.f-item {
+	margin: 0px 5px;
+	flex: 1;
+	padding: 0px;
+}
+
+.logo-placeholder__footer {
+	padding: 0px;
+	margin: 0px;
+}
+
+.author {
+	display: block;
+	margin: 0px 0px 10px 0px;
+	padding: 0px;
+	font-weight: 400;
+	font-size: 0.8em;
+}
+
+.author-info > h4 {
+	text-decoration: underline;
+	display: block;
+}
+
+.author-info > p {
+	font-size: 0.8em;
+	font-weight: 500;
+}
+
+.information {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.info-wrapper {
+	flex: 1;
+	align-items: center;
+}
+
+.info-wrapper > h4 {
+	display: block;
+	text-decoration: underline;
+}
+
+.info-wrapper > ul li {
+	display: block;
+	list-style: none;
+	text-decoration: underline;
+}
+
+.info-wrapper > ul li a {
+	color: var(--text);
+}
+
+/* .connection {
+	display: flex;
+	flex-direction: column;
+	border: 1px dashed brown;
+} */
+
+.subscribe {
+	flex: 1;
+}
+
+.subscribe-form {
+	display: flex;
+	align-content: center;
+}
+
+.connection > hr {
+	color: var(--text);
+	margin: 10px 0px;
+}
+
+.subscribe > h4 {
+	text-decoration: underline;
+}
+
+.searchTerm {
+	flex: 1;
+	align-self: stretch;
+	margin: 0px 4px 0px 0px;
+	padding: 5px;
+	height: 14px;
+	border-radius: 3px;
+	color: #1f1f1f;
+	background-color: var(--text);
+}
+
+.searchTerm:focus {
+	color: #757575;
+}
+.button {
+	display: inline-block;
+	padding: 4px 8px;
+	text-decoration: none;
+	border-radius: 3px;
+	text-align: center;
+	color: #343233;
+	background-color: #ffd152;
+	border-color: #ffd152;
+	/* margin: 0px; */
+	cursor: pointer;
+	font-weight: 500;
+}
+
+.button:hover {
+	color: #343233;
+	background-color: #ffc31f;
+	border-color: #ffc31f;
+}
+
+.button:active {
+	color: #343233;
+	background-color: #ebac00;
+	border-color: #ebac00;
+}
+
+.socialize {
+	display: flex;
+	justify-content: center;
+	/* border: 1px solid red; */
+}
+
+.socialmedia-item {
+	/* flex: 1; */
+	fill: #efdab9;
+	/* margin: 10px; */
+	margin: 5px;
+
+	/* border: 1px solid orange; */
+
+	/* display: block; */
+	background-color: #3d3a3a;
+	border-radius: 5px;
+}
+
+.socialmedia-item > a {
+	/* border: 1px solid blue; */
+}
+
+.socialmedia-item > a > img {
+	padding: 5px;
+	/* margin: 5px; */
+}
+
+/* .breadcrumb:last-child {
+	font-weight: 500;
+	vertical-align: top;
+}
+.breadcrumb.dark {
+	color: rgba(0, 0, 0, 0.5);
+	line-height: 64px;
+}
+.breadcrumb.dark:before {
+	color: rgba(0, 0, 0, 0.2);
+	vertical-align: middle;
+}
+.breadcrumb.dark:last-child {
+	color: rgba(0, 0, 0, 1);
+}
+.breadcrumb.dark i {
+	line-height: 64px;
+}
+
+.footer-bar {
+	background-color: var(--footer-bar);
+} */
